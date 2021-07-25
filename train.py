@@ -4,7 +4,7 @@ from fastbook import *
 
 def get_x(r): return Path('.')/r['filename']
 
-def get_y(r): return r['labels'].split(' ')
+def get_y(r): return r['label'].split(' ')
 
 def trainAndExport(filename, modelOutputName):
     multilables = pd.read_csv(filename)
