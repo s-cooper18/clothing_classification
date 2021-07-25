@@ -1,6 +1,10 @@
-import fastbook
-fastbook.setup_book()
-from fastbook import *
+from pathlib import Path
+from fastai.vision.data import DataBlock, ImageBlock, MultiCategoryBlock
+from fastai.vision.augment import RandomResizedCrop, aug_transforms
+import pandas as pd
+from fastai.vision.learner import *
+from fastai.vision.models import resnet18
+from fastai.metrics import partial, accuracy_multi
 
 def get_x(r): return Path('.')/r['filename']
 
@@ -20,14 +24,10 @@ def trainAndExport(filename, modelOutputName):
     learn.export(learner_name)
 
 # Turning it into a multilabel data block
-
-if __name__ == "__main__":
+def train():
+    import fastbook
+    fastbook.setup_book()
+    #from fastbook import *
     filename = 'labels_subset_10.csv'
     modelOutputName = "multi_label_model_subset_10.pkl"
     trainAndExport(filename, modelOutputName)
-
-
-
-
-
-
